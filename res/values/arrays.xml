@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <string-array name="sections">
+        <item>Home</item>
+        <item>Do and See</item>
+        <item>Species</item>
+        <item>Maps</item>
+        <item>Gallery</item>
+        <item>About App</item>
+    </string-array>
+    
+    <string-array name="speciestabs">
+        <item>Groups</item>
+        <item>Alphabetical</item>
+    </string-array>
+    
+    <string-array name="tab_details_titles">
+        <item>Details</item>
+        <item>Commonly Seen</item>
+        <item>Scarcity</item>
+    </string-array>
+    
+    
+    <string-array name="list_images_gallery">
+        <item>01_Eagles_Nest_rock_formation_looking_west_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>02_Bird_life_on_cliffs_Photo_by_Tracey-Ann_Hooley.jpg</item>
+        <item>03_Seaweed_covered_reefs_in_the_waters_off_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>04_Snorkelling_over_reef_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>05_Beach_walkers_at_the_base_of_cliffs_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>06_Brown_seaweeds_species_Photo_by_Julian_Finn.jpg</item>
+        <item>07_Small_nudibranchs_on_seaweed_and_reef_Photo_by_David_Paul.jpg</item>
+        <item>08_Beach_with_drift_seaweed_and_coastal_vegetation_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>09_Sea_snails_on_rocky_shores_Photo_by_Patrick_Honan.jpg</item>
+        <item>10_Masses_of_rock_boulders_form_the_shoreline_west_of_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>11_Camouflaged_crabs_on_rocky_shores_Photo_by_Mark_Norman.jpg</item>
+        <item>12_Boating_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>13_Rocky_shore_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>14_Sea_snails_in_seaweed_reef_areas_Photo_by_Julian_Finn_Museum_Victoria.jpg</item>
+        <item>15_Green_seaweed_species_Photo_by_Julian_Finn.jpg</item>
+        <item>16_Dense_diverse_seaweed_and_seagrass_reefs_at_Shack_Bay_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>17_Rock_boulders_meet_sand_at_the_waters_edge_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>18_Juvenile_fishes_on_reefs_Photo_by_Julian_Finn.jpg</item>
+        <item>19_Bird_life_on_rocky_shores_Photo_by_Julian_Finn.jpg</item>
+        <item>20_Giant_rock_formations_covered_in_encrusting_growth_at_Twin_Reefs_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>21_Shack_Bay_looking_east_toward_Ealges_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>22_Microcrustaceans_in_sandy_areas_Photo_by_Chris_Rowley.jpg</item>
+        <item>23_Chitons_on_rocky_shores_Photo_by_Julian_Finn.jpg</item>
+        <item>24_Shrimps_in_reef_areas_and_rocky_shores_Photo_by_Julian_Finn.jpg</item>
+        <item>25_Patterns_in_seaweed_fronds_Photo_by_Julian_Finn.jpg</item>
+        <item>26_Surfers_heading_out_at_low_tide_off_Eagles_Nest_eastern_rock_platform_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>27_Bubble-like_thin_strands_of_seaweed_Photo_by_Julian_Finn.jpg</item>
+        <item>28_Seastars_in_reef_areas_and_rocky_shores_Photo_by_Julian_Finn.jpg</item>
+        <item>29_Crabs_on_rocky_shores_Photo_by_Chris_Rowley.jpg</item>
+        <item>30_Fishes_swim_in_lush_seaweed_and_reef_areas_Photo_by_Mark_Norman.jpg</item>
+        <item>31_Seagrass_habitat_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>32_Parks_Victoria_rangers_at_nearby_Cape_Paterson_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>33_Anemones_on_rocky_shores_Photo_by_Patrick_Honan.jpg</item>
+        <item>34_Rock_platform_eastern_side_of_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>35_Southern_Rock_Lobsters_in_reef_crevices_Photo_by_Mark_Norman.jpg</item>
+        <item>36_Rock_boulders_at_base_of_cliffs_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>37_Sponges_on_reef_walls_Photo_by_Mark_Norman.jpg</item>
+        <item>38_Boat_access_and_beach_at_nearby_Cape_Paterson_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>39_Port_Jackson_Sharks_on_reef_ledges_and_in_crevices_Photo_by_Mark_Norman.jpg</item>
+        <item>40_Bed_of_Neptunes_Necklace_on_reef_at_Shack_Bay_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>41_Rock_pools_ready_for_exploring_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>42_Stretches_of_sand_between_seagrass_beds_in_waters_off_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>43_Deeper_water_seaweed_species_at_Twin_Reefs_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>44_Flat_rock_platforms_extend_meters_underwater_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>45_Cliffs_looking_west_to_Twin_Reefs_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>46_Snorkelling_over_seaweed_covered_reefs_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>47_Kayaking_at_nearby_Cape_Paterson_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>48_Rock_ledges_at_Twin_Reefs_teeming_with_fish_life_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>49_Seaweed_meadow_at_Eagles_Nest_Photo_by_Mark_Norman_Museum_Victoria.jpg</item>
+        <item>50_Stalked_ascidians_on_reefs_between_seaweed_Photo_by_Julian_Finn.jpg</item>
+        <item>51_Aerial_bird_life_along_the_coast_Photo_by_Tracey-Ann_Hooley.jpg</item>
+    </string-array>
+    
+    <string-array name="list_images_maps">
+        <item>01_Bunurong_Marine_National_Park_located_midway_between_Phillip_Island_and_Wilsons_Promontory_on_the_eastern_coast_of_Victoria.jpg</item>
+        <item>02_Bunurong_Marine_National_Park_and_nearby_waters.jpg</item>
+        <item>03_Marine_protected_areas_in_Victoria.jpg</item>
+        <item>04_Seafloor_topography_(bathymetry_-_depth)_in_the_Bunurong_Marine_National_Park.jpg</item>
+    </string-array>
+        
+</resources>
