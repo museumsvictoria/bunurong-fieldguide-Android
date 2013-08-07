@@ -85,8 +85,6 @@ public class SpeciesItemDetailFragment extends SherlockFragment {
 		baseContext = getSherlockActivity();
 		final ActionBar ab = getSherlockActivity().getSupportActionBar();
 
-		String displayText = "No species found";
-
 		String spIdentifier = null;
 		Bundle bundle = this.getArguments();
 		if (bundle != null) {
@@ -98,17 +96,12 @@ public class SpeciesItemDetailFragment extends SherlockFragment {
 				.getApplicationContext());
 		cursor = fgdb.getSpeciesDetails(spIdentifier, null);
 
-		String label = "No species";
 		if (cursor != null) {
-			label = cursor.getString(cursor.getColumnIndex("label"));
-			String identifier = cursor.getString(cursor
-					.getColumnIndex("identifier"));
+			String label = cursor.getString(cursor.getColumnIndex("label"));
+			String identifier = cursor.getString(cursor.getColumnIndex("identifier"));
 			cursorImages = fgdb.getSpeciesImages(identifier);
 
-			displayText = "Displaying species info for '" + label + "'";
-
 			ab.setTitle(label);
-
 			displaySpeciesInformation();
 		}
 	}
@@ -276,18 +269,6 @@ public class SpeciesItemDetailFragment extends SherlockFragment {
 					image.setPadding(imgThumbPadding, imgThumbPadding,
 							imgThumbPadding, imgThumbPadding);
 
-					// image.setImageBitmap(ImageResizer.decodeSampledBitmapFromAsset(getActivity().getAssets(),
-					// img, imgThumbSize, imgThumbSize));
-
-					// InputStream istr = null;
-					// try {
-					// istr = Utilities.getAssetInputStream(getActivity(), img);
-					// } catch (Exception e) {
-					// e.printStackTrace();
-					// }
-					// image.setImageBitmap(ImageResizer.decodeSampledBitmapFromStream(istr,
-					// imgThumbSize, imgThumbSize));
-
 					image.setImageBitmap(ImageResizer
 							.decodeSampledBitmapFromFile(Utilities
 									.getFullExternalDataPath(baseContext, img),
@@ -370,11 +351,13 @@ public class SpeciesItemDetailFragment extends SherlockFragment {
 		}
 
 		// Load Scarcity information
-		TextView tsinfo = (TextView) baseContext.findViewById(R.id.tstatusInfo);
-		if (tsinfo != null) {
-			tsinfo.setText(Html.fromHtml(r
-					.getString(R.string.threatenedstatusinfo)));
-			tsinfo.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView statusTextDSE = (TextView) baseContext.findViewById(R.id.statusTextDSE);
+		if (statusTextDSE != null) {
+			TextView tsinfo = (TextView) baseContext.findViewById(R.id.tstatusInfo);
+			if (tsinfo != null) {
+				tsinfo.setText(Html.fromHtml(r.getString(R.string.threatenedstatusinfo)));
+				tsinfo.setMovementMethod(LinkMovementMethod.getInstance());
+			}
 
 			// set the DSE value
 			String conservationStatusDSEValue = getColumnValue("conservationStatusDSE");
@@ -453,29 +436,19 @@ public class SpeciesItemDetailFragment extends SherlockFragment {
 
 		switch (statusLevel) {
 		case 20:
-			// statusView.setProgressDrawable(r.getDrawable(R.drawable.threat_status_critically_endangered));
-			statusView
-					.setBackgroundResource(R.drawable.threat_status_critically_endangered);
+			statusView.setBackgroundResource(R.drawable.threat_status_critically_endangered);
 			break;
 		case 40:
-			// statusView.setProgressDrawable(r.getDrawable(R.drawable.threat_status_endangered));
-			statusView
-					.setBackgroundResource(R.drawable.threat_status_endangered);
+			statusView.setBackgroundResource(R.drawable.threat_status_endangered);
 			break;
 		case 60:
-			// statusView.setProgressDrawable(r.getDrawable(R.drawable.threat_status_vulnerable));
-			statusView
-					.setBackgroundResource(R.drawable.threat_status_vulnerable);
+			statusView.setBackgroundResource(R.drawable.threat_status_vulnerable);
 			break;
 		case 80:
-			// statusView.setProgressDrawable(r.getDrawable(R.drawable.threat_status_near_threatened));
-			statusView
-					.setBackgroundResource(R.drawable.threat_status_near_threatened);
+			statusView.setBackgroundResource(R.drawable.threat_status_near_threatened);
 			break;
 		default:
-			// statusView.setProgressDrawable(r.getDrawable(R.drawable.threat_status_not_listed));
-			statusView
-					.setBackgroundResource(R.drawable.threat_status_not_listed);
+			statusView.setBackgroundResource(R.drawable.threat_status_not_listed);
 
 			break;
 		}

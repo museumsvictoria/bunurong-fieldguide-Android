@@ -1,5 +1,11 @@
 package au.com.museumvictoria.fieldguide.bunurong.model;
 
+/**
+ * Species group object
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class Group {
 	private String label;
 	private int order; 

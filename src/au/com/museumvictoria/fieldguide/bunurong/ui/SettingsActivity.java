@@ -7,6 +7,14 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
 
+/**
+ * The Settings activity
+ * 
+ * TODO: Update to use more native methods or use a fragment instead
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class SettingsActivity extends SherlockPreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

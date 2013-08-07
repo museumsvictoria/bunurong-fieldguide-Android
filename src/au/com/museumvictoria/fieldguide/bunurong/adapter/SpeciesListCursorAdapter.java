@@ -20,7 +20,9 @@ import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 import au.com.museumvictoria.fieldguide.bunurong.R;
 
 /**
- * @author aranipeta
+ * <p>CursorAdapter for displaying species in an alphabetical order</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
  *
  */
 public class SpeciesListCursorAdapter extends CursorAdapter implements SectionIndexer {
@@ -50,15 +52,6 @@ public class SpeciesListCursorAdapter extends CursorAdapter implements SectionIn
         txtView1.setText(cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_LABEL)));
 		
 		ImageView imgView = (ImageView) view.findViewById(R.id.speciesIcon);
-		// imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromAsset(context.getAssets(), iconPath, 150, 150));
-        
-//		InputStream istr = null;
-//		try {
-//			istr = Utilities.getAssetInputStream(context, iconPath);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromStream(istr, 75, 75));
 		imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromFile(Utilities.getFullExternalDataPath(context, iconPath), 75, 75));
 
 		

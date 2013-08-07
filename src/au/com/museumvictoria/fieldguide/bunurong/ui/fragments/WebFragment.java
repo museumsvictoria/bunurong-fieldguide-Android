@@ -24,10 +24,6 @@ import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-/**
- * @author aranipeta
- *
- */
 public class WebFragment extends SherlockFragment {
 	
 	private String htmlPage = "information"; 
@@ -47,19 +43,11 @@ public class WebFragment extends SherlockFragment {
 		
 		AssetManager mgr = getActivity().getAssets();
         try {
-//            InputStream in = mgr.open(filename, AssetManager.ACCESS_BUFFER);
-//
-//            String sHTML = streamToString(in);
-//            in.close();
-
             //display this html in the browser
             WebView w = (WebView) getActivity().findViewById(R.id.webView);
-            //w.setBackgroundColor(getResources().getColor(R.color.actionBarEnd));
             w.setBackgroundColor(Color.BLACK);
-            //w.getSettings().setDefaultZoom(ZoomDensity.FAR);
             w.getSettings().setSupportZoom(false); 
             w.getSettings().setJavaScriptEnabled(true); 
-            //w.loadDataWithBaseURL("file:///android_asset/", sHTML, "text/html", "utf-8", null);
             
             if (htmlPage.equalsIgnoreCase("opensourcelicences")) {
             	w.loadDataWithBaseURL("", getResources().getString(R.string.opensourcelicences), "text/html", "utf-8", null);

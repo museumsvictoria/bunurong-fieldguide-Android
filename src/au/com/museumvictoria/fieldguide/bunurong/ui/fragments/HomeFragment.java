@@ -12,7 +12,8 @@ import au.com.museumvictoria.fieldguide.bunurong.R;
 import com.actionbarsherlock.app.SherlockFragment;
 
 /**
- * @author aranipeta
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
  *
  */
 public class HomeFragment extends SherlockFragment {

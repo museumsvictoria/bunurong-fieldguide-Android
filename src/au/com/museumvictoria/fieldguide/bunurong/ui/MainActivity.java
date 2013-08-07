@@ -28,6 +28,13 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
+/**
+ * <p>Main activity class that does all the fragment changes.</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
+
 @SuppressLint("NewApi")
 public class MainActivity extends SherlockFragmentActivity implements
 		ActionBar.TabListener, SpeciesItemListFragment.Callbacks {

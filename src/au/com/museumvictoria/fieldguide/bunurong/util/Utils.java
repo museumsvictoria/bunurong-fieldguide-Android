@@ -27,7 +27,12 @@ import android.os.StatFs;
 import java.io.File;
 
 /**
- * Class containing some static utility methods.
+ * <p>Class containing some static utility methods.</p>
+ * 
+ * TODO: Bring all utility functions into a single space
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ * 
  */
 public class Utils {
 	private static final String TAG = "Bunurong.Utils";

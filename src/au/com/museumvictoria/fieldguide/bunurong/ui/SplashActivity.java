@@ -38,6 +38,20 @@ import com.google.android.vending.expansion.downloader.IDownloaderClient;
 import com.google.android.vending.expansion.downloader.IDownloaderService;
 import com.google.android.vending.expansion.downloader.IStub;
 
+/**
+ * <p>Does a lot of the initiations</p>
+ * <ul>
+ * 	<li>Loads up the splash image.</li>
+ *  <li>Checks if it is a first run and data is available</li>
+ *  <li>Check if there are data updates</li>
+ *  <li>Download data if necessary from the Google Play store using the licence service</li>
+ * </ul>
+ * 
+ * TODO: Need a better system to check for new data and clean up the old data
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class SplashActivity extends SherlockActivity implements IDownloaderClient {
 
 	private static final String TAG = "SplashScreenActivity";

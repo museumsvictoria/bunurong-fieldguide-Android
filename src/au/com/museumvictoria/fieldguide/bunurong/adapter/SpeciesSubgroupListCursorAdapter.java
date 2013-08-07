@@ -13,6 +13,12 @@ import au.com.museumvictoria.fieldguide.bunurong.util.ImageResizer;
 import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 import au.com.museumvictoria.fieldguide.bunurong.R;
 
+/**
+ * <p>CursorAdapter for displaying species subgroups</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class SpeciesSubgroupListCursorAdapter extends SimpleCursorAdapter {
 	
 	private static final String TAG = "SpeciesSubgroupListCursorAdapter";
@@ -37,10 +43,9 @@ public class SpeciesSubgroupListCursorAdapter extends SimpleCursorAdapter {
         if (convertView == null) 
         {
             convertView = mInflater.inflate(R.layout.species_list_groupped, null);
-        	//convertView = mInflater.inflate(R.layout.fragment_species_grouplist, null);
             holder = new ViewHolder();
-            holder.text1 = (TextView) convertView.findViewById(R.id.speciesLabel);//Task Title
-            holder.text2 = (TextView) convertView.findViewById(R.id.speciesSublabel);//Task Date
+            holder.text1 = (TextView) convertView.findViewById(R.id.speciesLabel);
+            holder.text2 = (TextView) convertView.findViewById(R.id.speciesSublabel);
             holder.img =   (ImageView) convertView.findViewById(R.id.speciesIcon);
 
             holder.sec_hr=(TextView) convertView.findViewById(R.id.speciesSubGroup);
@@ -77,8 +82,6 @@ public class SpeciesSubgroupListCursorAdapter extends SimpleCursorAdapter {
         
         holder.text1.setText(speciesLabel);
         holder.text2.setText(speciesSublabel);
-        //holder.img.setImageBitmap(ImageResizer.decodeSampledBitmapFromAsset(mContext.getAssets(), iconPath, 150, 150));
-        
         holder.img.setImageBitmap(ImageResizer.decodeSampledBitmapFromFile(Utilities.getFullExternalDataPath(mContext, iconPath), 150, 150));
 
         return convertView;

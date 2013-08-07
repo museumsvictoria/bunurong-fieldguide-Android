@@ -40,6 +40,15 @@ import au.com.museumvictoria.fieldguide.bunurong.model.Images;
 import au.com.museumvictoria.fieldguide.bunurong.model.Species;
 import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 
+/**
+ * <p>Helper class to do all database related activities</p>
+ * 
+ * TODO: Clean this class up big time.
+ * TODO: Remove deprecated code
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class FieldGuideDatabase {
 
 	private static final String TAG = "Bunurong.FieldGuideDatabase";
@@ -112,7 +121,7 @@ public class FieldGuideDatabase {
 
 	public Cursor getSpeciesMatches(String query, String[] columns) {
 		
-		Log.w(TAG, "Searching species for " + query); 
+		Log.d(TAG, "Searching species for " + query); 
 		
 		String selection = SPECIES_SEARCHTEXT + " LIKE ?";
 	    String[] selectionArgs = new String[] {"%"+query+"%"};
@@ -131,7 +140,7 @@ public class FieldGuideDatabase {
 		// or default to all species
 		if (groupLabel != null && !groupLabel.equals("ALL")) {
 			// do nothing
-			Log.w(TAG, "Getting species list for '" + groupLabel + "'");
+			Log.d(TAG, "Getting species list for '" + groupLabel + "'");
 			selection = SPECIES_GROUP + " = ?";
 			selectionArgs = new String[] { groupLabel };
 			orderBy = SPECIES_SUBGROUP;
@@ -140,11 +149,11 @@ public class FieldGuideDatabase {
 		Cursor cursor = query(SPECIES_TABLE_NAME, columns, selection, selectionArgs, groupBy, orderBy);
 
 		if (cursor == null) {
-			Log.w(TAG, "Cursor is null");
+			Log.w(TAG, "Species list not available");
 			return null;
 		} else if (!cursor.moveToFirst()) {
 			cursor.close();
-			Log.w(TAG, "Cursor has nothing. closing.");
+			Log.w(TAG, "Species list not available");
 			return null;
 		}
 
@@ -160,11 +169,11 @@ public class FieldGuideDatabase {
 		Cursor cursor = query(SPECIES_TABLE_NAME, columns, null, null, SPECIES_GROUP, SPECIES_GROUP);
 
 		if (cursor == null) {
-			Log.w(TAG, "Species Group Cursor is null");
+			Log.w(TAG, "No species groups available");
 			return null;
 		} else if (!cursor.moveToFirst()) {
 			cursor.close();
-			Log.w(TAG, "Species Group Cursor has nothing. closing.");
+			Log.w(TAG, "No species groups available");
 			return null;
 		}
 
@@ -196,22 +205,21 @@ public class FieldGuideDatabase {
 		 * column names
 		 */
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-		// builder.setTables(SPECIES_TABLE_NAME +
-		// " LEFT OUTER JOIN bar ON ("+SPECIES_TABLE_NAME+".identifier = "+MEDIA_TABLE_NAME+".identifier)");
-		// builder.setTables(SPECIES_TABLE_NAME + "," + MEDIA_TABLE_NAME);
 		builder.setTables(tables);
 
 		Cursor cursor = builder.query(mDatabaseOpenHelper.getReadableDatabase(), columns, selection, selectionArgs,
 				groupBy, null, orderBy);
 
 		if (cursor == null) {
+			Log.w(TAG, "No data available from the query");
 			return null;
 		} else if (!cursor.moveToFirst()) {
+			Log.w(TAG, "No data available from the query");
 			cursor.close();
 			return null;
 		}
 		
-		Log.w(TAG, "Returning " + cursor.getCount() + " species");
+		Log.d(TAG, "Returning " + cursor.getCount() + " records");
 		
 		return cursor;
 	}
@@ -226,21 +234,20 @@ public class FieldGuideDatabase {
 	 * @return Cursor positioned to matching word, or null if not found.
 	 */
 	public Cursor getSpeciesDetails(String identifier, String[] columns) {
-		//String selection = SPECIES_IDENTIFIER + " = ?";
 		String selection = BaseColumns._ID + " = ?";
 		String[] selectionArgs = new String[] { identifier };
 
-		//return query(SPECIES_TABLE_NAME + "," + MEDIA_TABLE_NAME, columns, selection, selectionArgs, null, null);
+		Log.d(TAG, "Getting species details for: " + identifier); 
+
 		return query(SPECIES_TABLE_NAME, columns, selection, selectionArgs, null, null);
 	}
 
 	public Cursor getSpeciesImages(String identifier) {
 		String selection = SPECIES_IDENTIFIER + " = ?";
 		String[] selectionArgs = new String[] { identifier };
-		
-		Log.w(TAG, "Getting species images for: " + identifier); 
 
-		//return query(SPECIES_TABLE_NAME + "," + MEDIA_TABLE_NAME, columns, selection, selectionArgs, null, null);
+		Log.d(TAG, "Getting species images for: " + identifier); 
+
 		return query(IMAGES_TABLE_NAME, null, selection, selectionArgs, null, null);
 	}
 	
@@ -283,7 +290,6 @@ public class FieldGuideDatabase {
 		//private final SQLiteDatabase.CursorFactory cursorFactory = new SQLiteCursorFactory(true); 
 
 		// IF NOT EXISTS
-
 		private static final String SPECIES_TABLE_CREATE = "CREATE TABLE "
 				+ SPECIES_TABLE_NAME
 				+ " (_id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, identifier TEXT, label TEXT, sublabel TEXT, searchText TEXT, squareThumbnail TEXT, searchIcon TEXT, groupLabel TEXT, subgroupLabel TEXT, description TEXT, bite TEXT, biology TEXT, diet TEXT, habitat TEXT, nativeStatus TEXT, distinctive TEXT, distribution TEXT, conservationStatusDSE TEXT, conservationStatusEPBC TEXT, conservationStatusIUCN TEXT, depth TEXT, location TEXT, isCommercial BOOL, taxaPhylum TEXT, taxaClass TEXT, taxaOrder TEXT, taxaFamily TEXT, taxaGenus TEXT, taxaSpecies TEXT, commonNames TEXT, otherNames TEXT); ";
@@ -311,25 +317,19 @@ public class FieldGuideDatabase {
 			mDatabase = db;
 
 			Log.w(TAG, "Creating tables");
-
-			// db.execSQL("DROP TABLE IF EXISTS " + SPECIES_TABLE_NAME);
-			// db.execSQL("DROP TABLE IF EXISTS " + MEDIA_TABLE_NAME);
-
 			mDatabase.execSQL(SPECIES_TABLE_CREATE);
 			mDatabase.execSQL(IMAGES_TABLE_CREATE);
 
 			Log.w(TAG, "Loading data via loadFieldGuideData()");
-
 			loadFieldGuideData();
 
 			Log.w(TAG, "Done loading data");
-
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion
-					+ ", which will destroy all old data");
+			Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
+			
 			db.execSQL("DROP TABLE IF EXISTS " + SPECIES_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + IMAGES_TABLE_NAME);
 			onCreate(db);
@@ -342,7 +342,7 @@ public class FieldGuideDatabase {
 			new Thread(new Runnable() {
 				public void run() {
 					try {
-						Log.w(TAG, "Loading data via loadData()");
+						Log.d(TAG, "Loading data via loadData()");
 						loadData();
 					} catch (IOException e) {
 						throw new RuntimeException(e);
@@ -355,14 +355,14 @@ public class FieldGuideDatabase {
 
 		private void loadData() throws IOException, JSONException {
 
-			Log.w(TAG, "in loadData()");
+			Log.d(TAG, "in loadData()");
 
-			Log.w(TAG, "Setting Species IH");
+			Log.d(TAG, "Setting Species IH");
 			InsertHelper ih1 = new InsertHelper(mDatabase, SPECIES_TABLE_NAME);
-			Log.w(TAG, "Setting Images IH");
+			Log.d(TAG, "Setting Images IH");
 			InsertHelper ih2 = new InsertHelper(mDatabase, IMAGES_TABLE_NAME);
 
-			Log.w(TAG, "Setting identifierColumn");
+			Log.d(TAG, "Setting identifierColumn");
 			final int identifierColumn = ih1.getColumnIndex("identifier");
 			final int labelColumn = ih1.getColumnIndex("label");
 			final int subLabelColumn = ih1.getColumnIndex("sublabel");
@@ -394,22 +394,18 @@ public class FieldGuideDatabase {
 			final int otherNamesColumn = ih1.getColumnIndex("otherNames");
 			final int searchIconColumn = ih1.getColumnIndex("searchIcon");
 
-			Log.w(TAG, "Setting filenameColumn");
+			Log.d(TAG, "Setting filenameColumn");
 			final int filenameColumn = ih2.getColumnIndex("filename");
 			final int captionColumn = ih2.getColumnIndex("caption");
 			final int creditColumn = ih2.getColumnIndex("credit");
 			final int identifierFKColumn = ih2.getColumnIndex("identifier");
 
-			Log.w(TAG, "Getting species data from getData()");
+			Log.d(TAG, "Getting species data from getData()");
 
 			HashMap<String, Object> data = getData();
 
 			Log.w(TAG, "Loading species data...");
 			if (data != null) {
-				//Double version = (Double) data.get("version");
-				//ArrayList<Species> splist = (ArrayList<Species>) data.get("data");
-				//Iterator<Species> its = splist.iterator();
-				
 				JsonArray splist = (JsonArray)data.get("data");
 				
 				totalCount = splist.size(); 
@@ -498,12 +494,12 @@ public class FieldGuideDatabase {
 				}
 
 			}
-			Log.w(TAG, "Done loading species data.");
+			Log.d(TAG, "Done loading species data.");
 
 		}
 
 		private HashMap<String, Object> getData() throws IOException, JSONException {
-			Log.w(TAG, "Reading species data...");
+			Log.d(TAG, "Reading species data...");
 			
 			//JsonReader reader = new JsonReader(new InputStreamReader(mHelperContext.getAssets().open("data/generaData.json")));
 			

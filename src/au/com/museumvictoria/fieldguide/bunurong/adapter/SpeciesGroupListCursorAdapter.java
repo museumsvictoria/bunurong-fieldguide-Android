@@ -1,5 +1,7 @@
 package au.com.museumvictoria.fieldguide.bunurong.adapter;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
@@ -16,6 +18,12 @@ import au.com.museumvictoria.fieldguide.bunurong.util.ImageResizer;
 import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 import au.com.museumvictoria.fieldguide.bunurong.R;
 
+/**
+ * <p>CursorAdapter for displaying species groups</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class SpeciesGroupListCursorAdapter extends CursorAdapter implements SectionIndexer {
 	
 	private static final String TAG = "SpeciesGroupListCursorAdapter";
@@ -49,21 +57,17 @@ public class SpeciesGroupListCursorAdapter extends CursorAdapter implements Sect
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		String groupLabel = cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_GROUP));
-		String iconLabel = groupLabel.toLowerCase().replaceAll(" ", "").replaceAll(",", "");
+		String iconLabel = groupLabel.toLowerCase(Locale.UK).replaceAll(" ", "").replaceAll(",", "");
 		String iconPath = Utilities.SPECIES_GROUPS_PATH + iconLabel + "@2x.png"; 
 		
 		TextView txtView1 = (TextView) view.findViewById(R.id.speciesLabel);
 		txtView1.setText(groupLabel);
 		
-		ImageView imgView = (ImageView) view.findViewById(R.id.speciesIcon);
-		// imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromAsset(getActivity().getAssets(), iconPath, 75, 75));
-        
 		Log.w(TAG, "Getting AssetsFileDescriptor for species group icon: " + iconPath);
+		ImageView imgView = (ImageView) view.findViewById(R.id.speciesIcon);
 		imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromFile(Utilities.getFullExternalDataPath(context, iconPath), 75, 75));
-
 		
 		TextView txtView2 = (TextView) view.findViewById(R.id.speciesSublabel);
-		// txtView2.setText(cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_SUBLABEL)));
 		txtView2.setVisibility(View.GONE);
 	}
 

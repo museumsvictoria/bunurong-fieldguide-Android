@@ -7,6 +7,15 @@ import au.com.museumvictoria.fieldguide.bunurong.util.ImageWorker.ImageWorkerAda
 import au.com.museumvictoria.fieldguide.bunurong.util.Utilities;
 import au.com.museumvictoria.fieldguide.bunurong.R;
 
+/**
+ * <p>Images provider/helper class to hold a list of images, description and credits for display 
+ * in a view pager mode.</p>
+ * 
+ * TODO: Clean this class up big time.
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ * 
+ */
 public class Images {
 	
 	private static final String TAG = "Bunurong.Provider.Images";

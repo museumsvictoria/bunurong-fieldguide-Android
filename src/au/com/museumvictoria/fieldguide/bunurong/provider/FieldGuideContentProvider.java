@@ -149,12 +149,6 @@ public class FieldGuideContentProvider extends ContentProvider {
 
 	private Cursor getSuggestions(String query) {
 		query = query.toLowerCase();
-		// String[] columns = new String[] { BaseColumns._ID,
-		// FieldGuideDatabase.SPECIES_IDENTIFIER,
-		// FieldGuideDatabase.SPECIES_LABEL,
-		// FieldGuideDatabase.SPECIES_SUBLABEL,
-		// FieldGuideDatabase.SPECIES_THUMBNAIL,
-		// SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID };
 
 		String[] columns = new String[] { BaseColumns._ID, 
 				FieldGuideDatabase.SPECIES_LABEL + " AS " + SearchManager.SUGGEST_COLUMN_TEXT_1,
@@ -163,8 +157,6 @@ public class FieldGuideContentProvider extends ContentProvider {
 				BaseColumns._ID + " AS " + SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID };
 
 		return mDatabase.getSpeciesMatches(query, columns);
-
-		// return mDatabase.getSpeciesList(null);
 	}
 
 	private Cursor search(String query) {
@@ -174,8 +166,6 @@ public class FieldGuideContentProvider extends ContentProvider {
 				FieldGuideDatabase.SPECIES_THUMBNAIL };
 
 		return mDatabase.getSpeciesMatches(query);
-
-		// return mDatabase.getSpeciesList(null);
 	}
 
 	private Cursor getSpeciesDetails(Uri uri) {
@@ -190,7 +180,7 @@ public class FieldGuideContentProvider extends ContentProvider {
 	public AssetFileDescriptor openAssetFile(Uri uri, String mode)
 			throws FileNotFoundException {
 		
-		Log.e(TAG, "in openAssetFile: uri: " + uri + " ==> mode: " + mode); 
+		Log.d(TAG, "in openAssetFile: uri: " + uri + " ==> mode: " + mode); 
 		
 		return super.openAssetFile(uri, mode);
 	}

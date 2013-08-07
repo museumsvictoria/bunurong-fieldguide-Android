@@ -23,6 +23,14 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
+/**
+ * <p>Image full screen activity with a caption and credit</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
+
+@SuppressLint("NewApi")
 public class ImageDetailActivity extends SherlockFragmentActivity implements OnClickListener {
 	
 	private static final String TAG = "Bunurong.ImageDetailActivity";
@@ -173,10 +181,10 @@ public class ImageDetailActivity extends SherlockFragmentActivity implements OnC
         @Override
         public SherlockFragment getItem(int position) {
         	if (galleryReference == -1) {
-        		Log.d(TAG, "SEtting IDF.id"); 
+        		Log.d(TAG, "Setting IDF.id"); 
         		return ImageDetailFragment.newInstance(position);
         	} else {
-        		Log.d(TAG, "SEtting IDF.id and IDF.galleryref"); 
+        		Log.d(TAG, "Setting IDF.id and IDF.galleryref"); 
         		return ImageDetailFragment.newInstance(position, galleryReference);        		
         	}
         }

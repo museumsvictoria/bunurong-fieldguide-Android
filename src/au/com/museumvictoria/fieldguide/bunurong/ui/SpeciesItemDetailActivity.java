@@ -18,6 +18,9 @@ import com.actionbarsherlock.view.MenuItem;
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link SpeciesItemDetailActivity}.
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ * 
  */
 public class SpeciesItemDetailActivity extends SherlockFragmentActivity {
 	

@@ -1,5 +1,7 @@
 package au.com.museumvictoria.fieldguide.bunurong.ui.fragments;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -68,21 +70,6 @@ public class SpeciesGroupListFragment extends SherlockListFragment {
 		super.onListItemClick(l, v, position, id);
 		Object o = l.getItemAtPosition(position);
 		Log.i(TAG, "Object: " + o.toString() + " -- " + o.getClass().getCanonicalName());
-		
-//		if (o instanceof Cursor) {
-//			Cursor cursor = (Cursor) o;
-//			String groupLabel = cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_GROUP));
-//			// Toast.makeText(getActivity().getApplicationContext(), "Group clicked: " + groupLabel, Toast.LENGTH_SHORT).show();
-//			
-//			Intent intent = new Intent(this.getActivity(), SpeciesActivity.class);
-//			intent.putExtra(Utilities.SPECIES_GROUP_LABEL, groupLabel);
-//			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); 
-//			startActivity(intent);
-//			
-//		} else {
-//			Toast.makeText(getActivity().getApplicationContext(), "Item clicked: " + id, Toast.LENGTH_SHORT).show();
-//		}
-		
 		Toast.makeText(getActivity().getApplicationContext(), "Item clicked: " + id, Toast.LENGTH_SHORT).show();
 	}
 	
@@ -121,28 +108,18 @@ public class SpeciesGroupListFragment extends SherlockListFragment {
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 			String groupLabel = cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_GROUP));
-			String iconLabel = groupLabel.toLowerCase().replaceAll(" ", "").replaceAll(",", "");
+			String iconLabel = groupLabel.toLowerCase(Locale.UK).replaceAll(" ", "").replaceAll(",", "");
 			String iconPath = Utilities.SPECIES_GROUPS_PATH + iconLabel + "@2x.png"; 
 			
 			TextView txtView1 = (TextView) view.findViewById(R.id.speciesLabel);
 			txtView1.setText(groupLabel);
 			
-			ImageView imgView = (ImageView) view.findViewById(R.id.speciesIcon);
-			// imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromAsset(getActivity().getAssets(), iconPath, 75, 75));
-	        
 			Log.w(TAG, "Getting AssetsFileDescriptor for species group icon: " + iconPath);
-//			InputStream istr = null;
-//			try {
-//				istr = Utilities.getAssetInputStream(getActivity(), iconPath);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromStream(istr, 75, 75));
+			ImageView imgView = (ImageView) view.findViewById(R.id.speciesIcon);
 			imgView.setImageBitmap(ImageResizer.decodeSampledBitmapFromFile(Utilities.getFullExternalDataPath(getActivity(), iconPath), 75, 75));
 
 			
 			TextView txtView2 = (TextView) view.findViewById(R.id.speciesSublabel);
-			// txtView2.setText(cursor.getString(cursor.getColumnIndex(FieldGuideDatabase.SPECIES_SUBLABEL)));
 			txtView2.setVisibility(View.GONE);
 		}
 

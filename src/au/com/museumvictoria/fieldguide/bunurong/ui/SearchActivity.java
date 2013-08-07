@@ -21,6 +21,8 @@ import com.actionbarsherlock.view.MenuItem;
 
 public class SearchActivity extends SherlockFragmentActivity {
 	
+	private static final String TAG = "Bunurong.SearchActivity";
+	
 	private TextView mTextView;
 	private ListView mListView;
 
@@ -59,12 +61,12 @@ public class SearchActivity extends SherlockFragmentActivity {
 
 	private void handleIntent(Intent intent) {
 
-		Log.w("Search ACtivity", "Handling search intent");
+		Log.d(TAG, "Handling search intent");
 
 		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 			// handles a click on a search suggestion; launches activity to show
 			// word
-			Log.w("Search ACtivity", "handling view event from SearchActivity: " + intent.getData());
+			Log.d(TAG, "handling view event from SearchActivity: " + intent.getData());
             Intent spdetailIntent = new Intent(getApplicationContext(), SpeciesItemDetailActivity.class);
             //Uri data = Uri.withAppendedPath(FieldGuideContentProvider.CONTENT_URI, String.valueOf(id));
             //spdetailIntent.setData(data);
@@ -76,7 +78,7 @@ public class SearchActivity extends SherlockFragmentActivity {
 		} else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			String query = intent.getStringExtra(SearchManager.QUERY);
 
-			Log.w("Search ACtivity", "Searching for " + query);
+			Log.d(TAG, "Searching for " + query);
 
 			// use the query to search your data somehow
 			searchSpecies(query);
@@ -132,8 +134,8 @@ public class SearchActivity extends SherlockFragmentActivity {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					Log.w("SearchActivity", "Displaying species details for " + id);
-					Log.w("SearchActivity", view.toString());
+					Log.d(TAG, "Displaying species details for " + id);
+					Log.d(TAG, view.toString());
 
                     Intent spdetailIntent = new Intent(getApplicationContext(), SpeciesItemDetailActivity.class);
                     //Uri data = Uri.withAppendedPath(FieldGuideContentProvider.CONTENT_URI, String.valueOf(id));

@@ -3,6 +3,12 @@ package au.com.museumvictoria.fieldguide.bunurong.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Species object
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class Species {
 	private String identifier;
 	private String label;

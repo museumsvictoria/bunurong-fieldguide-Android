@@ -14,7 +14,16 @@ import java.util.zip.ZipFile;
 
 import android.util.Log;
 
+/**
+ * <p>Helper class to unzip data on initial load</p>
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class ZipHelper {
+	
+	private static final String TAG = "Bunurong.ZipHelper";
+	
     boolean zipError=false;
 
     public boolean isZipError() {
@@ -27,7 +36,7 @@ public class ZipHelper {
 
     public void unzip(String archive, File outputDir) {
         try {
-            Log.d("control","ZipHelper.unzip() - File: " + archive);
+            Log.d(TAG,"ZipHelper.unzip() - File: " + archive);
             ZipFile zipfile = new ZipFile(archive);
             for (Enumeration e = zipfile.entries(); e.hasMoreElements(); ) {
                 ZipEntry entry = (ZipEntry) e.nextElement();
@@ -36,7 +45,7 @@ public class ZipHelper {
             }
         }
         catch (Exception e) {
-            Log.d("control","ZipHelper.unzip() - Error extracting file " + archive+": "+ e);
+            Log.e(TAG,"ZipHelper.unzip() - Error extracting file " + archive+": "+ e);
             setZipError(true);
         }
     }
@@ -60,7 +69,7 @@ public class ZipHelper {
             copy(inputStream, outputStream);
         }
         catch (Exception e) {
-            Log.d("control","ZipHelper.unzipEntry() - Error: " + e);
+            Log.e(TAG,"ZipHelper.unzipEntry() - Error: " + e);
             setZipError(true);
         }
         finally {
@@ -70,11 +79,11 @@ public class ZipHelper {
     }
 
     private void createDirectory(File dir) {
-        Log.d("control","ZipHelper.createDir() - Creating directory: "+dir.getName());
+        Log.d(TAG,"ZipHelper.createDir() - Creating directory: "+dir.getName());
         if (!dir.exists()){
             if(!dir.mkdirs()) throw new RuntimeException("Can't create directory "+dir);
         }
-        else Log.d("control","ZipHelper.createDir() - Exists directory: "+dir.getName());
+        else Log.d(TAG,"ZipHelper.createDir() - Exists directory: "+dir.getName());
     }
     
 	// Copies src file to dst file.

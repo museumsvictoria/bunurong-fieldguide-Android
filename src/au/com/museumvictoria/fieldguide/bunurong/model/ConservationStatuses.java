@@ -1,5 +1,11 @@
 package au.com.museumvictoria.fieldguide.bunurong.model;
 
+/**
+ * Species conservation status object
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class ConservationStatuses {
 	private String authority;
 	private String status;

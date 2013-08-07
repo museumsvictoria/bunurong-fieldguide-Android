@@ -15,6 +15,15 @@ import android.util.Log;
 import com.android.vending.expansion.zipfile.APKExpansionSupport;
 import com.android.vending.expansion.zipfile.ZipResourceFile;
 
+/**
+ * <p>Utilities file with all the constants and generic functions.</p>
+ * 
+ * TODO: Move all constants into res/values folder instead of keeping them here.
+ * TODO: Possibility of loading all the data straight from the .obb file rather than unzipping the data? 
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class Utilities {
 
 	private static final String TAG = "Utilities";

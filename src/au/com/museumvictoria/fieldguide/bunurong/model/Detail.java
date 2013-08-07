@@ -3,6 +3,12 @@ package au.com.museumvictoria.fieldguide.bunurong.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Species detail object
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class Detail {
 	private String description;
 	private String bite;
@@ -12,8 +18,6 @@ public class Detail {
 	private String nativeStatus;
 	private String distinctive;
 	private String distribution;
-	//private String conservationStatus;
-	//private String conservationStatusAuthority;
 	private ArrayList<ConservationStatuses> conservationStatuses;
 	private String[] depth;
 	private String[] location;	

@@ -1,5 +1,11 @@
 package au.com.museumvictoria.fieldguide.bunurong.model;
 
+/**
+ * Species image object
+ * 
+ * @author Ajay Ranipeta <ajay.ranipeta@gmail.com>
+ *
+ */
 public class Images {
 	private String filename;
 	private String imageDescription;

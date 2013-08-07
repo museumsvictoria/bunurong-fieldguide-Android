@@ -143,8 +143,6 @@ public class ImageDetailFragment extends SherlockFragment {
             	
             	Drawable d = null;
     			try {
-    				//d = Drawable.createFromStream(getActivity().getAssets().open(imgPath), null);
-    				
     				d = Drawable.createFromStream(Utilities.getAssetInputStream(getActivity(), imgPath), null);
     				
     			} catch (Exception e) {
